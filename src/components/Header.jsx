@@ -7,7 +7,8 @@ const Header = () => {
         <Fragment>
             <div className="container-fluid img-header">
                 <div>
-                    <h1 className="text-tamaño titulooo">CIRO REY</h1>
+                    <br/><br/><br/><br/>
+                    <h1 className=" text-tamaño text-center titulooo">CIRO REY</h1>
                     <h3 className="text-center subtitle">Desarrollador Web</h3>
                 </div>
             </div>
