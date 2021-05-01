@@ -17,21 +17,21 @@ const Form = () => {
                     <div className="row d-flex justify-content-center">
                         <div id="formulario">   
 
-                            <form name="contact" method="POST" data-netlify="true">
+                            <form name="contact3" method="POST" data-netlify="true">
 
                                 <div className="mb-3">
                                     <label className="form-label">Nombre</label>
-                                    <input type="text" className="form-control" required="required"></input>
+                                    <input type="text" name="name" id="name" className="form-control" required="required"></input>
                                 </div>
 
                                 <div className="mb-3">
                                     <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-                                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required="required"></input>
+                                    <input type="email" name="email" className="form-control" id="email" aria-describedby="emailHelp" required="required"></input>
                                 </div>
 
                                 <div className="mb-4">
                                     <label htmlFor="exampleInputEmail1" className="form-label">Mensaje</label>
-                                    <textarea className="form-control" name="" id="" cols="30" rows="4" required="required"></textarea>
+                                    <textarea className="form-control" name="mensaje" id="mensaje" cols="30" rows="4" required="required"></textarea>
                                 </div>
                                 
                                 <div className="mb-4 text-center">
