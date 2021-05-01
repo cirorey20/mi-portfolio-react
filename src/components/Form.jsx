@@ -15,9 +15,12 @@ const Form = () => {
 
                 <div className="container">
                     <div className="row d-flex justify-content-center">
-                        <div id="formulario">   
+                        <div>   
 
-                            <form name="contact3" method="POST" data-netlify="true">
+                            <form name="contact v3" method="post" data-netlify="true" onSubmit="submit">
+
+                                <input type="hidden" name="for-name" value="contact v3" />
+
 
                                 <div className="mb-3">
                                     <label className="form-label">Nombre</label>
