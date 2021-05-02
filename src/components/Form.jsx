@@ -1,7 +1,41 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import githubLogo from '../assets/img/github-icon.png';
+import sweetalert from 'sweetalert';
+import {store} from '../firebaseconfig';
 
 const Form = () => {
+
+    const[nombre, setNombre] = useState('');
+    const[email, setEmail] = useState('');
+    const[mesagge, setMesagge] = useState('');
+
+    const enviarMensaje = (e) => {
+        e.preventDefault()
+
+        const correo = {
+            name: nombre,
+            email: email,
+            content: mesagge
+        }
+
+        try{
+            store.collection('mensajes').add(correo)
+            
+        }catch(e){
+            console.log(e)
+        }
+
+        sweetalert({
+            icon: "success",
+            title: "Tu mensaje se envió correctamente"
+        });
+
+        setEmail('')
+        setMesagge('')
+        setNombre('')
+    }
+    
+
     return (
         <Fragment>
             <div className="mt-5"></div>
@@ -17,28 +51,50 @@ const Form = () => {
                     <div className="row d-flex justify-content-center">
                         <div>   
 
-                            <form name="contact v3" method="post" data-netlify="true" onSubmit="submit">
-
-                                <input type="hidden" name="for-name" value="contact v3" />
-
+                            <form method="post" onSubmit={enviarMensaje}>
 
                                 <div className="mb-3">
                                     <label className="form-label">Nombre</label>
-                                    <input type="text" name="name" id="name" className="form-control" required="required"></input>
+                                    <input
+                                        value={nombre}
+                                        onChange={(e)=> { setNombre(e.target.value) }}
+                                        type="text" 
+                                        name="name" id="name" 
+                                        className="form-control" 
+                                        required="required">
+                                    </input>
                                 </div>
 
                                 <div className="mb-3">
                                     <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-                                    <input type="email" name="email" className="form-control" id="email" aria-describedby="emailHelp" required="required"></input>
+                                    <input
+                                        value={email}
+                                        onChange={(e)=> { setEmail(e.target.value) }}
+                                        type="email" 
+                                        name="email" 
+                                        className="form-control" 
+                                        id="email" 
+                                        aria-describedby="emailHelp" 
+                                        required="required">
+                                    </input>
                                 </div>
 
                                 <div className="mb-4">
                                     <label htmlFor="exampleInputEmail1" className="form-label">Mensaje</label>
-                                    <textarea className="form-control" name="mensaje" id="mensaje" cols="30" rows="4" required="required"></textarea>
+                                    <textarea 
+                                        value={mesagge}
+                                        onChange={(e)=> { setMesagge(e.target.value) }}
+                                        className="form-control" 
+                                        name="mensaje" 
+                                        id="mensaje" 
+                                        cols="30" 
+                                        rows="4" 
+                                        required="required">
+                                    </textarea>
                                 </div>
                                 
                                 <div className="mb-4 text-center">
-                                    <button type="submit" className="btn btn-outline-light">Enviar</button>
+                                    <input type="submit" value="Enviar" className="btn btn-outline-light"/>
                                 </div>
                                 
                             </form>
